@@ -1,5 +1,6 @@
 package com.user;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.websocket.server.PathParam;
@@ -25,16 +26,16 @@ public class UserRatingController {
 	
 	
 	@RequestMapping(value="/list")
-	public List <User> getAllUsers(){
+	public HashMap<String,Object> getAllUsers(){
 		return userService.retrieveAllUsers();
 	}
 	
 	
 	@RequestMapping(value = "/getrating", method=RequestMethod.GET)
-	public User getUserbyId(
-	  @RequestParam("id") String id) {
-		return userService.retrieveUser(id);
-	}
+	public HashMap<String,Object> getUserbyId(
+			  @RequestParam("userid") String userid) {
+				return userService.retrieveUser(userid);
+			}
 	
 	/*@RequestMapping(value="/{id}" , method = RequestMethod.GET)
     public User getUser(@PathVariable String id){
